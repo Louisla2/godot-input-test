@@ -7,8 +7,8 @@ extends Node2D
 # the input will count as a click in the Background scene and moves the Player
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Click"):
-		get_tree().set_input_as_handled()
 		if get_node("Sprite").get_rect().has_point(get_local_mouse_position()):
+			get_tree().set_input_as_handled()
 			print("Character clicked")
 
 
