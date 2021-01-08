@@ -2,16 +2,6 @@ class_name Character
 extends Node2D
 
 
-# TODO
-# does work with the first press but after release or on pressed and mouse move,
-# the input will count as a click in the Background scene and moves the Player
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("Click"):
-		if get_node("Sprite").get_rect().has_point(get_local_mouse_position()):
-			get_tree().set_input_as_handled()
-			print("Character clicked")
-
-
 # some basic movement
 var speed = 500
 var moving = false
@@ -19,6 +9,13 @@ var start = Vector2()
 var destination = Vector2()
 var distance = 0
 var normalized_direction = Vector2()
+
+
+func _unhandled_input(event):
+	if Input.is_action_pressed("Click"):
+		if get_node("Sprite").get_rect().has_point(get_local_mouse_position()):
+			get_tree().set_input_as_handled()
+			print("Character clicked")
 
 
 func _move(destination):
